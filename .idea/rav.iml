@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/e1c/packages/metadata/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/e1c/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages" />
