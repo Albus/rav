@@ -6,7 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/e1c/packages/metadata/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/e1c/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/src" />
     </content>
     <orderEntry type="jdk" jdkName="uv (rav)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
