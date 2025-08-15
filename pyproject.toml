@@ -11,8 +11,7 @@ link-mode = "copy"
 link-mode = "copy"
 
 [tool.uv.workspace]
-members = [
-    "packages/e1c",
-    "packages/e1c/packages/ext",
-    "packages/e1c/packages/ext/packages/meta",
-]
+members = ["packages/*"]
+
+[tool.uv.build-backend]
+namespace = false

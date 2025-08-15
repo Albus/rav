@@ -1,3 +1,3 @@
 <component name="DependencyValidationManager">
-  <scope name="WorkTree" pattern="file[rav]:**/packages/*||file[rav]:*||file[rav]:**/src/**" />
+  <scope name="WorkTree" pattern="file[rav]:*||file[rav]:packages//*" />
 </component>
