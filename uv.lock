@@ -1,0 +1,41 @@
+version = 1
+revision = 2
+requires-python = ">=3.13, <4.0"
+
+[[package]]
+name = "rav"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "rav-e1c" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "rav-e1c", editable = "packages/e1c" }]
+
+[[package]]
+name = "rav-e1c"
+version = "0.1.0"
+source = { editable = "packages/e1c" }
+dependencies = [
+    { name = "rav-e1c-ext" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "rav-e1c-ext", editable = "packages/e1c/packages/ext" }]
+
+[[package]]
+name = "rav-e1c-ext"
+version = "0.1.0"
+source = { editable = "packages/e1c/packages/ext" }
+dependencies = [
+    { name = "rav-e1c-ext-meta" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "rav-e1c-ext-meta", editable = "packages/e1c/packages/ext/packages/meta" }]
+
+[[package]]
+name = "rav-e1c-ext-meta"
+version = "0.1.0"
+source = { editable = "packages/e1c/packages/ext/packages/meta" }

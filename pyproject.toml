@@ -1,0 +1,17 @@
+[project]
+name = "rav"
+version = "0.1.0"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "rav-e1c",
+]
+
+[tool.uv.sources]
+rav-e1c = { path = "packages/e1c", editable = true }
+
+[build-system]
+requires = ["uv_build>=0.8.11,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+namespace = true
