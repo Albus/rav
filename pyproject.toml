@@ -20,5 +20,6 @@ namespace = true
 
 [tool.uv]
 constraint-dependencies = [
-  "fastapi~=0.116.1; python_version>='3.13,<4.0'",
+  "fastapi>=0.116.1; python_version>='3.13,<4.0'",
+  "cashews>=7.4.1; python_version>='3.13,<4.0'"
 ]
