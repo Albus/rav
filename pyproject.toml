@@ -3,7 +3,11 @@ name = "rav"
 version = "0.1.0"
 requires-python = ">=3.13,<4.0"
 dependencies = [
+    "cashews[dill,diskcache,redis,speedup]>=7.4.1",
     "decorator>=5.2.1",
+    "fastapi[all]>=0.116.1",
+    "pydantic[email,timezone]>=2.11.7",
+    "yarl>=1.20.1",
 ]
 
 [tool.uv]
