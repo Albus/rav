@@ -4,9 +4,8 @@ version = "0.1.0"
 requires-python = ">=3.13,<4.0"
 dependencies = []
 
-[build-system]
-requires = ["uv_build>=0.8.11,<0.9.0"]
-build-backend = "uv_build"
+[tool.uv]
+link-mode = "copy"
 
-[tool.uv.build-backend]
-namespace = true
+[tool.uv.pip]
+link-mode = "copy"
