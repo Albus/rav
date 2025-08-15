@@ -2,7 +2,9 @@
 name = "rav"
 version = "0.1.0"
 requires-python = ">=3.13,<4.0"
-dependencies = []
+dependencies = [
+    "decorator>=5.2.1",
+]
 
 [tool.uv]
 link-mode = "copy"
@@ -13,5 +15,11 @@ link-mode = "copy"
 [tool.uv.workspace]
 members = ["packages/*"]
 
+
+[build-system]
+requires = ["uv_build>=0.8.11,<0.9.0"]
+build-backend = "uv_build"
+
 [tool.uv.build-backend]
-namespace = false
+namespace = true
+
