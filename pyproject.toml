@@ -15,3 +15,10 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 namespace = true
+
+[tool.uv.workspace]
+members = [
+  "packages/e1c",
+  "packages/e1c/packages/ext",
+  "packages/e1c/packages/ext/packages/meta",
+]
