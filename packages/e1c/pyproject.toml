@@ -3,6 +3,7 @@ name = "rav-e1c"
 version = "0.1.0"
 requires-python = ">=3.13,<4.0"
 dependencies = [
+    "cashews>=7.4.1",
     "httpx>=0.28.1",
 ]
 
