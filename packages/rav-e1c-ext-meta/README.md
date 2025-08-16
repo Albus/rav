@@ -1,34 +1,24 @@
 ```python
-from rav_e1c_ext_meta import BaseTable, discriminator, parse_meta, MetaData
+from rav_e1c_ext_meta import discriminator, parse_meta, MetaData, table_model
 
-...
-
+@cache(ttl=None)
 async def meta() -> MetaData:
     global processing
     return orjson.loads(await(await processing.get('/meta')).aread())
 
 class Table(RootModel[Annotated[Union[
-    Annotated[create_model(
-        r'ДокументТранзакцияВыплаты',
-        __module__=r'Метаданные', __base__=BaseTable
-    ), Tag(r'Документ.ТранзакцияВыплаты')],
-    Annotated[create_model(
-        r'ДокументТранзакцияВыплатыСБП',
-        __module__=r'Метаданные', __base__=BaseTable
-    ), Tag(r'Документ.ТранзакцияВыплатыСБП')]
+    table_model(r'ДокументТранзакцияВыплаты',module=r'Метаданные',meta=r'Документ.ТранзакцияВыплаты'),
+    table_model(r'ДокументТранзакцияВыплаты', module=r'Метаданные', meta=r'Документ.ТранзакцияВыплаты')
 ], discriminator]]): ...
-ic(parse_meta(runnify(meta)(), descriptor=Table))
+
+tables = parse_meta(runnify(meta)(), descriptor=Table)
 ```
 
 ```python
 {'Документ.ТранзакцияВыплаты': ДокументТранзакцияВыплаты(
-   Назначение='Основная', 
-   Метаданные='Документ.ТранзакцияВыплаты', 
-   ИмяТаблицы='Документ.ТранзакцияВыплаты', 
-   ИмяТаблицыХранения='_Document94'),
+    Назначение='Основная', Метаданные=PurePosixPath('Документ/ТранзакцияВыплаты'),
+    ИмяТаблицы='Документ.ТранзакцияВыплаты', ИмяТаблицыХранения='_Document94'),
  'Документ.ТранзакцияВыплатыСБП': ДокументТранзакцияВыплатыСБП(
-   Назначение='Основная', 
-   Метаданные='Документ.ТранзакцияВыплатыСБП', 
-   ИмяТаблицы='Документ.ТранзакцияВыплатыСБП', 
-   ИмяТаблицыХранения='_Document5637')}
+     Назначение='Основная', Метаданные=PurePosixPath('Документ/ТранзакцияВыплатыСБП'),
+     ИмяТаблицы='Документ.ТранзакцияВыплатыСБП', ИмяТаблицыХранения='_Document5637')}
 ```

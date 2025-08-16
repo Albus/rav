@@ -1,10 +1,10 @@
 from contextlib import suppress
 from pathlib import PurePosixPath
-from typing import Protocol, Final, Literal, TypedDict, get_args, Type
+from typing import Protocol, Final, Literal, TypedDict, Type, Annotated
 
-from pydantic import BaseModel, Discriminator, ValidationError, RootModel, field_validator
+from pydantic import BaseModel, Discriminator, ValidationError, RootModel, field_validator, Tag, create_model
 
-__all__ = [r'BaseTable', r'ProtocolTable', r'discriminator', r'MetaData', r'parse_meta']
+__all__ = [r'BaseTable', r'ProtocolTable', r'discriminator', r'MetaData', r'parse_meta', r'table_model']
 
 
 class ProtocolTable(Protocol):
@@ -20,8 +20,9 @@ class BaseTable(BaseModel, frozen=True):
 
     # noinspection PyPep8Naming
     @field_validator(r'Метаданные', mode='before')
-    def val_before_Метаданные(cls, v: str)->str:
-        return v.replace(r'.',r'/')
+    def val_before_Метаданные(cls, v: str) -> str:
+        return v.replace(r'.', r'/')
+
 
 def discriminator(v: dict) -> str:
     return v['Метаданные']
@@ -34,10 +35,14 @@ class MetaData(TypedDict):
     Строки: list
 
 
+# noinspection PyRedeclaration
+def table_model(name: str, *, module: str, meta: str) -> Type[BaseTable]:
+    return Annotated[create_model(name, __module__=module, __base__=BaseTable), Tag(meta)]
+
 
 def parse_meta[T=RootModel](meta: MetaData, *, descriptor: Type[T]) -> dict[str, T]:
-    tables:list[T] = []
+    tables: list[T] = []
     for t in meta[r'Строки']:
         with suppress(ValidationError):
             tables.append(descriptor.model_validate(t))
-    return {v.root.ИмяТаблицы:v.root for v in iter(tables)}
+    return {v.root.ИмяТаблицы: v.root for v in iter(tables)}
