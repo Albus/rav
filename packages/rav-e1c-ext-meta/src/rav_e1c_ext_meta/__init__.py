@@ -14,12 +14,12 @@ class ProtocolMeta(Protocol):
 
 
 class BaseMeta(BaseModel):
-    Метаданные: PurePosixPath
+    Метаданные: PurePosixPath | None
 
     # noinspection PyPep8Naming
     @field_validator(r'Метаданные', mode='before')
-    def val_before_Метаданные(cls, v: str) -> str:
-        return v.replace(r'.', r'/')
+    def val_before_Метаданные(cls, v: str) -> str | None:
+        return v.replace(r'.', r'/') if v else None
 
 
 class BaseField(BaseMeta):
