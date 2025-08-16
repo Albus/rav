@@ -1,7 +1,8 @@
 from contextlib import suppress
+from pathlib import PurePosixPath
 from typing import Protocol, Final, Literal, TypedDict, get_args, Type
 
-from pydantic import BaseModel, Discriminator, ValidationError, RootModel
+from pydantic import BaseModel, Discriminator, ValidationError, RootModel, field_validator
 
 __all__ = [r'BaseTable', r'ProtocolTable', r'discriminator', r'MetaData', r'parse_meta']
 
@@ -13,10 +14,14 @@ class ProtocolTable(Protocol):
 # noinspection PyDataclass
 class BaseTable(BaseModel, frozen=True):
     Назначение: Literal[r'Основная']
-    Метаданные: str
+    Метаданные: PurePosixPath
     ИмяТаблицы: str
     ИмяТаблицыХранения: str
 
+    # noinspection PyPep8Naming
+    @field_validator(r'Метаданные', mode='before')
+    def val_before_Метаданные(cls, v: str)->str:
+        return v.replace(r'.',r'/')
 
 def discriminator(v: dict) -> str:
     return v['Метаданные']
