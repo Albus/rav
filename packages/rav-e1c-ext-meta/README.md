@@ -1,10 +1,8 @@
 ```python
 from rav_e1c_ext_meta import discriminator, parse_meta, MetaData, table_model
 
-@cache(ttl=None)
-async def meta() -> MetaData:
-    global processing
-    return orjson.loads(await(await processing.get('/meta')).aread())
+async def meta(src: AsyncClient) -> MetaData:
+    return orjson.loads(await(await src.get('/meta')).aread())
 
 class Table(RootModel[Annotated[Union[
     table_model(r'ДокументТранзакцияВыплаты',module=r'Метаданные',meta=r'Документ.ТранзакцияВыплаты'),
