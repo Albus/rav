@@ -15,4 +15,4 @@ link-mode = "copy"
 link-mode = "copy"
 
 [tool.uv.build-backend]
-namespace = false
+namespace = true
