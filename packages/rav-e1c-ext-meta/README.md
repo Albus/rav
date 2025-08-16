@@ -5,7 +5,7 @@ async def meta(src: AsyncClient) -> MetaData:
     return orjson.loads(await(await src.get('/meta')).aread())
 
 class Table(RootModel[Annotated[Union[
-    table_model(r'ДокументТранзакцияВыплаты',module=r'Метаданные',meta=r'Документ.ТранзакцияВыплаты'),
+    table_model(r'ДокументТранзакцияВыплаты', module=r'Метаданные', meta=r'Документ.ТранзакцияВыплаты'),
     table_model(r'ДокументТранзакцияВыплаты', module=r'Метаданные', meta=r'Документ.ТранзакцияВыплаты')
 ], discriminator]]): ...
 
