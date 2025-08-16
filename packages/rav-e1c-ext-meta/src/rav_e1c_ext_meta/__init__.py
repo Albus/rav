@@ -35,7 +35,7 @@ class MetaData(TypedDict):
 
 
 
-def parse_meta[T=RootModel](meta: MetaData, descriptor: Type[T]) -> dict[str, T]:
+def parse_meta[T=RootModel](meta: MetaData, *, descriptor: Type[T]) -> dict[str, T]:
     tables:list[T] = []
     for t in meta[r'Строки']:
         with suppress(ValidationError):

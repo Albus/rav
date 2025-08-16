@@ -17,7 +17,7 @@ class Table(RootModel[Annotated[Union[
         __module__=r'Метаданные', __base__=BaseTable
     ), Tag(r'Документ.ТранзакцияВыплатыСБП')]
 ], discriminator]]): ...
-ic(parse_meta(runnify(meta)(), Table))
+ic(parse_meta(runnify(meta)(), descriptor=Table))
 ```
 
 ```python
