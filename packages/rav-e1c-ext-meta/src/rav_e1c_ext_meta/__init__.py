@@ -32,7 +32,7 @@ class BaseField(BaseMeta):
 
 
 class BaseTable(BaseMeta):
-    Назначение: Literal[r'Основная']
+    Назначение: str
     ИмяТаблицы: str
     ИмяТаблицыХранения: str
 
