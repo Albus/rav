@@ -2,7 +2,9 @@
 name = "rav-pydantic"
 version = "0.1.0"
 requires-python = ">=3.13,<4.0"
-dependencies = []
+dependencies = [
+    "pydantic>=2.11.7",
+]
 
 [build-system]
 requires = ["uv_build>=0.8.11,<0.9.0"]
