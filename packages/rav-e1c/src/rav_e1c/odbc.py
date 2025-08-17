@@ -21,7 +21,7 @@ def connection_string(
     :param portnumb: PASSWORD: номер порта
     :param basename: DATABASE
     :param username: UID
-    :param password: PASSWORD
+    :param password: PWD
     :param clntname: WSID
     :param appname: APP
     :return:
@@ -32,7 +32,7 @@ def connection_string(
         f'SERVER={hostname},{portnumb}',
         f'DATABASE={basename}',
         f'UID={username}',
-        f'PASSWORD={password}',
+        f'PWD={password}',
         f'WSID={clntname}',
         f'APP={appname}',
         'Trusted_Connection=No',
