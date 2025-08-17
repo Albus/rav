@@ -29,7 +29,7 @@ def connection_string(
 
     return r' ; '.join([
         r'DRIVER = {ODBC Driver ' f'{version}' r' for SQL Server}',
-        f'SERVER = {hostname}, {portnumb}'
+        f'SERVER = {hostname}, {portnumb}',
         f'DATABASE = {basename}',
         f'UID = {username}',
         f'PASSWORD = {password}',
