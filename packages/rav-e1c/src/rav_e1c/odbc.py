@@ -1,12 +1,18 @@
-from typing_extensions import Literal
+from typing import Final, Literal
 
+
+from socket import gethostname
+
+__all__ = [r'HOSTNAME', r'connection_string']
+
+HOSTNAME: Final[str] = gethostname()
 
 # noinspection SpellCheckingInspection
 def connection_string(
         version: Literal[17, 18] = 18, *,
-        hostname: str, portnumb: int,
-        basename: str, username: str, password: str,
-        clntname: str, appname: str = r'python'):
+        hostname: str=r'localhost', portnumb: int= 1433,
+        basename: str, username: str = r'sa', password: str,
+        clntname: str = HOSTNAME, appname: str = r'python'):
     """
     Создает строку подключения ODBC
 
